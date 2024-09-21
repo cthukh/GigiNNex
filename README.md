@@ -1,7 +1,7 @@
 # DegiNNex
 
 
-### Esta pagina web esta pensada para que personas con el conocimiento en areas como:
+### Esta pagina web esta pensada para que personas con el conocimiento en áreas de:
 
 - Creacion y edicion de material audiovisual
   - videos
@@ -9,5 +9,5 @@
   - imagenes
 
 - Creacion de paginas web
-
-### El fin de esto es para que el cliente pueda comprar uno de estos servicios, ya sea para fines personales o fines publicitarios.
+### Puedan ofrecer sus servicios y que el publico pueda contactar con ellos.
+### La tienda cuenta con dos lados, Cliente y Vendedor
