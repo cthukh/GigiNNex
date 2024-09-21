@@ -1,0 +1,48 @@
+
+/* Estilo unico de barra de navegación */
+
+header {
+    position: relative;
+    background: linear-gradient(to bottom, #a005c7, #04cfaa);
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+}
+
+body a {
+    text-decoration: none;
+}
+
+.title {
+    padding: 20px;
+    color: #ffffff;
+    font-style: oblique;
+}
+
+#navbar {
+    padding: 20px;
+    margin: 10px;
+}
+
+#navbar ul {
+    list-style: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar ul li {
+    display: inline-flex;
+    margin: 0 15px;
+}
+
+#navbar ul li a {
+    font-size: 20px;
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+#navbar ul li a:hover {
+    color: #2a5815;
+    text-decoration: dashed;
+}

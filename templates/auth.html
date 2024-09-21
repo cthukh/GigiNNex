@@ -1,0 +1,84 @@
+<!-- Pagina Principal de Loggeo -->
+{% extends "base_template.html" %}
+
+{% block title %}
+    Registrate en DegiNNex
+{% endblock %}
+
+<!-- El bloque link envia stylesheet por separado para evitar conflictos con otros archivos -->
+
+{% block link %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/auth.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <!-- Registro -->
+            <div id="registrarse" class="col-6">
+                <h1>Registro de usuarios</h1>
+                <form action="/register" method="POST">
+                    {{ form_registro.hidden_tag() }}
+                    <div class="mb-3">
+                        {{ form_registro.nombre.label }}
+                        {{ form_registro.nombre(class="form-control") }}
+                        {% for error in form_registro.nombre.errors %}
+                        <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_registro.correo.label }}
+                        {{ form_registro.correo(class="form-control") }}
+                        {% for error in form_registro.correo.errors %}
+                        <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_registro.clave.label }}
+                        {{ form_registro.clave(class="form-control") }}
+                        {% for error in form_registro.clave.errors %}
+                        <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_registro.confirmar_clave.label }}
+                        {{ form_registro.confirmar_clave(class="form-control") }}
+                    </div>
+                    {{ form_registro.submit(class="btn btn-primary") }}
+                </form>
+            </div>
+
+            <!-- Acceso -->
+            <div id="ingresar" class="col-6">
+                <h1>Acceso de usuarios</h1>
+                <form action="/login" method="POST">
+                    {{ form_acceso.hidden_tag() }}
+                    <div class="mb-3">
+                        {{ form_acceso.correo.label }}
+                        {{ form_acceso.correo(class="form-control") }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_acceso.clave.label }}
+                        {{ form_acceso.clave(class="form-control") }}
+                    </div>
+                    {{ form_acceso.submit(class="btn btn-primary") }}
+                </form>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul>
+                            {% for message in messages %}
+                            <li style="color: red;">{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+{% endblock %}

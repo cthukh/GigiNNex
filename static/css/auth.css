@@ -1,0 +1,26 @@
+.container {
+    background-color: rgba(0, 0, 0, 0.5);
+    margin-top: 80px;
+    border-radius: 10px;
+    box-shadow: inset rgba(62, 19, 94, 0.4) -10px -10px 35px;
+}
+
+.main {
+    background-image: url('/static/img/city_pop_sui.png');
+    background-size: auto; /* Ajusta la imagen al contenedor sin recortarla */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center; /* Centra la imagen en el fondo */
+    height: 100vh; /* Asegura que el body ocupe toda la altura de la ventana */
+    overflow: hidden; /* Oculta el contenido que sobresale */
+    background-color: black;
+}
+
+#registrarse {
+    color: azure;
+}
+
+#ingresar {
+    
+    color: black;
+}
+

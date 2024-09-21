@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(225, 221, 221);
+}
+
+/* main */
+
+section {
+    padding: 50px;
+    margin: 0px;
+    h2 {
+        margin-left:40px;
+    }
+}
+
+.service {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    color: rgb(0, 0, 0);
+    align-items: center;
+    transition: color 0.4s ease;
+    display: flex;
+    flex-direction: row;
+    margin: 30px;
+    justify-content: space-between;
+    background: linear-gradient(to right, #60edf4, rgb(9, 125, 53));
+    border: 1px solid #ccc;
+    height: 320px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.service-item {
+    margin-left: 10px;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Para el overlay */
+    z-index: 1;
+}
+
+.service .overlay {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    position: absolute; /* Posiciona el overlay */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo negro semitransparente */
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-left: 40%;
+    opacity: 0; /* Inicialmente oculto */
+    transition: opacity 0.6s ease; /* Transición suave */
+    z-index: 2; /* Asegura que el overlay esté por encima del contenido */
+}
+
+.service:hover .overlay {
+    opacity: 10; /* Muestra el overlay al pasar el mouse */
+}
+
+.service-img {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 60%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+}
+
+.service-img img {
+    width: 100%;
+    height: auto;
+    align-items: center;
+    object-fit: cover;
+}
+
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}

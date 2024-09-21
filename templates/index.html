@@ -1,0 +1,130 @@
+<!-- principal | index -->
+
+{% extends "base_template.html" %}
+
+
+{% block title %}
+    DegiNNex
+{% endblock %}
+
+<!-- El bloque link envia stylesheet por separado para evitar conflictos con otros archivos -->
+
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block content %}
+    <header>
+        <a href="/inicio"><h1 class="title">DegiNNex</h1></a>
+
+        <nav id="navbar">
+            <ul>
+                <li><a href="#services" >Servicios</a></li>
+                <li><a href="/home">Perfil</a></li>
+                <li><a href="#about">Acerca de</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <div class="main">
+        <!-- Servicios -->
+        <section id="services">
+            <h2>Categorias</h2>
+
+            <a href="{{ url_for('selecionar_categorias', categoria='videos') }}">
+                <!-- categoria videos -->
+                <div class="service" >
+                    <div class="service-item">
+                        <h3>Videos</h3>
+                    </div>
+                    <div class="service-img">
+                        <img src="{{url_for('static', filename='img/editando-video.jpg')}}" alt="editando video">
+                    </div>
+                    <div class="overlay">
+                        <h4>Crea, mejora o edita lo que no te gusto de tus videos pidiendole a alguien que lo haga por ti.</h4>
+                    </div>
+                </div>
+            </a>
+
+            <a href="{{ url_for('selecionar_categorias', categoria='imagenes') }}">
+                <!-- categoria imagenes -->
+                <div class="service">
+                    <div class="service-item">
+                        <h3>Imagenes</h3>
+                    </div>
+                    <div class="service-img">
+                        <img src="{{url_for('static', filename='img/fotografo.png')}}" alt="fotografiando novios">
+                    </div>
+                    <div class="overlay">
+                        <h4>Deja que un profesional se encargue de esa imagen que tienes pensado como logo de tu empresa.</h4>
+                    </div>
+                </div>
+            </a>
+
+            <a href="{{ url_for('selecionar_categorias', categoria='audio') }}">
+                <!-- categoria audio -->
+                <div class="service">
+                    <div class="service-item">
+                        <h3>Audio</h3>
+                    </div>
+                    <div class="service-img">
+                        <img src="{{url_for('static', filename='img/haciedo-musica-digital.png')}}" alt="haciendo musica">
+                    </div>
+                    <div class="overlay">
+                        <h4>Si crees que no tienes ritmo, deja que alguien que si lo haga por ti.</h4>
+                    </div>
+                </div>
+            </a>
+
+            <a href="{{ url_for('selecionar_categorias', categoria='sitios_web') }}">
+                <!-- categoria sitios webs -->
+                <div class="service">
+                    <div class="service-item">
+                        <h3>Sitios Web</h3>
+                    </div>
+                    <div class="service-img">
+                        <img src="{{url_for('static', filename='img/programando-pagina-web.jpg')}}" alt="codeando web">
+                    </div>
+                    <div class="overlay">
+                        <h4>Si tienes la idea pero no los conocimientos, hay alguien que te puede ayudar.</h4>
+                    </div>
+                </div>
+            </a>
+
+        </section>
+
+        <!-- Sobre nosotros -->
+
+        <section id="about">
+            <h2>Acerca de Nosotros</h2>
+            <p>Somos una plataforma dedicada a conectar profesionales creativos con clientes.</p>
+        </section>
+
+        <!-- contactos -->
+
+        <section id="contact">
+            <h2>Contacto</h2>
+            <form id="contact-form">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                <label for="message">Mensaje:</label>
+                <textarea id="message" required></textarea>
+                <button class="btn" type="submit">Enviar</button>
+            </form>
+        </section>
+
+    </div>
+
+    <footer>
+        <p><strong>&copy; 2024 DigiNNex, Warens inc. </strong></p>
+    </footer>
+
+{% endblock %}
+
+{% block script %}
+<script src="{{url_for('static', filename='js/script.js')}}"></script>
+{% endblock %}
