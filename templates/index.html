@@ -19,18 +19,17 @@
 
         <nav id="navbar">
             <ul>
-                <li><a href="#services" >Servicios</a></li>
-                <li><a href="/home">Perfil</a></li>
+                <li><a href="#servicios" >Servicios</a></li>
+                <li><a href="/perfil">Perfil</a></li>
                 <li><a href="#about">Acerca de</a></li>
-                <li><a href="#contact">Contacto</a></li>
+                <li><a href="#">Contacto</a></li>
             </ul>
         </nav>
-
     </header>
 
     <div class="main">
         <!-- Servicios -->
-        <section id="services">
+        <section class="main-section" id="services">
             <h2>Categorias</h2>
 
             <a href="{{ url_for('selecionar_categorias', categoria='videos') }}">
@@ -92,19 +91,10 @@
                     </div>
                 </div>
             </a>
-
-        </section>
-
-        <!-- Sobre nosotros -->
-
-        <section id="about">
-            <h2>Acerca de Nosotros</h2>
-            <p>Somos una plataforma dedicada a conectar profesionales creativos con clientes.</p>
         </section>
 
         <!-- contactos -->
-
-        <section id="contact">
+        <section class="main-section" id="contact">
             <h2>Contacto</h2>
             <form id="contact-form">
                 <label for="name">Nombre:</label>
@@ -120,6 +110,12 @@
     </div>
 
     <footer>
+        <!-- Sobre nosotros -->
+        <section id="about">
+            <h2>Acerca de Nosotros</h2>
+            <p>Somos una plataforma dedicada a conectar profesionales creativos con clientes.</p>
+        </section>
+
         <p><strong>&copy; 2024 DigiNNex, Warens inc. </strong></p>
     </footer>
 

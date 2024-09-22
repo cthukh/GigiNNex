@@ -7,7 +7,9 @@
     Usuario DegiNNex
 {% endblock %}
 
-
+{% block link %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/perfil.css')}}">
+{% endblock %}
 
 {% block content %}
     <header>
@@ -16,28 +18,30 @@
         <nav id="navbar">
             <ul>
                 <li><a href="/inicio" >Servicios</a></li>
-                <li><a href="/home">Perfil</a></li>
-                <li><a href="/inicio">Acerca de</a></li>
-                <li><a href="/inicio">Contacto</a></li>
+                <li><a href="/perfil">Perfil</a></li>
+                <li><a href="/inicio#about">Acerca de</a></li>
+                <li><a href="#">Contacto</a></li>
             </ul>
         </nav>
-
     </header>
-    <div class="container">
-        <div class="col-4"></div>
-        <div class="col-4">
-            {% for usuario in usuarios %}
-                <div class="card" style="width: 18rem;">
-                    <img src="{{ usuario.foto }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">{{ usuario.nombre }} </h5>
-                    <p class="card-text">{{usuario.correo }}</p>
-                    <a href="#" class="btn btn-primary">Editar</a>
-                    <a href="#" class="btn btn-danger">Eliminar</a>
-                    </div>
-                </div>
-            {% endfor %}
+
+    <div class="card">
+        <!-- <img src="{{ usuario.foto }}" class="card-img-top" alt="..."> -->
+        <div class="card-body">
+        <h5 class="card-title">{{ usuario.nombre }} </h5>
+        <p class="card-text">{{usuario.correo }}</p>
+        <a href="#" class="btn btn-primary">Editar</a>
+        <a href="/logout" class="btn btn-danger">Cerrar Sesión</a>
         </div>
-        <div class="col-4"></div>
     </div>
+
+    <!-- <footer>
+        Sobre nosotros
+        <section id="about">
+            <h2>Acerca de Nosotros</h2>
+            <p>Somos una plataforma dedicada a conectar profesionales creativos con clientes.</p>
+        </section>
+        <p><strong>&copy; 2024 DigiNNex, Warens inc. </strong></p>
+    </footer> -->
+
 {% endblock %}

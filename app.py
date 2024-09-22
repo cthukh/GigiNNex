@@ -29,8 +29,7 @@ def add_header(response):
     response.headers['Expires'] = '0'
     return response
 
-# control usuarios
-
+# Ruta que maneja si el usuario ya esta registrado y si tiene sesión abierta.
 @app.route("/")
 def auth(form_registro=None, form_acceso=None):
     if current_user.is_authenticated:
@@ -43,6 +42,7 @@ def auth(form_registro=None, form_acceso=None):
         form_acceso = FormularioAcceso()
     return render_template("auth.html", form_registro=form_registro, form_acceso=form_acceso)
 
+# Ruta que maneja el registro de nuevos usuarios
 @app.route("/register", methods=["POST"])
 def register():
     form   = FormularioRegistro()
@@ -75,11 +75,10 @@ def register():
         flash("Form invalido")
         return auth(form_registro=form)
 
-
+# Ruta si el usuario ya esta registrado
 @app.route("/login", methods=["POST"])
 def login():
     form_acceso = FormularioAcceso()
-    
     if form_acceso.validate_on_submit():
         flash(f"Acceso solicitado para el usuario { form_acceso.correo.data }")
         usuario = Usuario().obtener_por_correo(form_acceso.correo.data)
@@ -97,14 +96,12 @@ def login():
             return(redirect("/"))
 
 # pagina principal
-
 @app.route('/inicio')
 def index():
     return render_template('index.html')
 
 # seleccion de categorias
-
-@app.route('/categorias/<string:categoria>')
+@app.route('/service/<string:categoria>')
 def selecionar_categorias(categoria):
     if   categoria == 'videos':
         return render_template ('cat_videos.html')
@@ -117,11 +114,11 @@ def selecionar_categorias(categoria):
 
 # opciones de usuario
 
-@app.route("/home")
+@app.route("/perfil")
 @login_required
-def home():
-    usuarios = Usuario().obtener_todos()
-    return render_template("perfil.html",usuarios=usuarios)
+def perfil():
+    # Ahora deberia recojer los datos solo de la sesion activa y enviarlos a perfil.html
+    return render_template("perfil.html", usuario=current_user)
 
 @app.route("/logout")
 def logout():

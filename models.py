@@ -20,7 +20,7 @@ class Usuario(db.Model, UserMixin):
         all_items = db.session.execute(db.select(Usuario)).scalars()
         all_items_list = []
         for item in all_items:
-            all_items_list.append(item)   
+            all_items_list.append(item)
         print("Items de consulta:",all_items_list)
         return(all_items_list)
 
