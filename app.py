@@ -136,3 +136,8 @@ def opciones_usuario():
 @app.errorhandler(404)
 def not_found(error):
     return render_template('404.html'), 404
+
+@app.route('/prueba')
+def prueba():
+    return render_template('indexcalixtro.html')
+

@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #31b49c;
+}
+
+.video-section {
+    margin: 50px;
+   display: flex;
+   justify-content: center;
+}
+
+h1 {
+    font-size: 32px;
+    color: #005f5f;
+    margin-bottom: 10px;
+}
+
+
+
+.explore-btn {
+    background-color: #ff5757;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.explore-btn:hover {
+    background-color: #e04e4e;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    flex: 0 0 60%; /* Ocupa el 60% del ancho */
+}
+
+.category {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: center;
+}
+
+.category.large {
+    grid-column: span 2;
+    height: 300px;
+}
+
+.category.small {
+    height: 150px;
+}
+
+.image {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+}
+
+h3 {
+    margin: 0;
+    padding: 10px;
+    font-size: 14px;
+    color: #005f5f;
+}

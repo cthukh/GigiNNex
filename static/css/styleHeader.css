@@ -3,7 +3,7 @@
 
 header {
     position: relative;
-    background: linear-gradient(to bottom, #2e0239, #a64fe4);
+    background: linear-gradient(to bottom, #000000, #0a2c2c);
     display: flex;
     justify-content: space-between;
     height: 100px;
