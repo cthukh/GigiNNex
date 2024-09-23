@@ -1,0 +1,13 @@
+para subir los cambio al github sigan estas instrucciones.
+
+1 - git add nombre_del_archivo
+2 - git commit - "describan los cambios que hicieron"
+3 - git push origin nombre_de_su_rama
+
+
+Ramas:
+-benjamin
+-mathi
+-rodri
+-jairo
+-master 
