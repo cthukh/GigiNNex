@@ -131,13 +131,26 @@ def logout():
 def opciones_usuario():
     return redirect ("/home")
 
+@app.route('/prueba')
+def prueba():
+    return render_template('indexcalixtro.html')
+
 # errores
 
 @app.errorhandler(404)
 def not_found(error):
     return render_template('404.html'), 404
 
-@app.route('/prueba')
-def prueba():
-    return render_template('indexcalixtro.html')
+# @app.route('/editar_usuario/<int:id>', methods=['PUT'])
+# def editar_usuario(id):
+#     data = request.get_json()
+#     nombre = data.get('nombre')
+#     correo = data.get('correo')
+#     clave = data.get('clave')
 
+#     usuario_editado = Usuario.editar_usuario(id, nombre, correo, clave)
+    
+#     if usuario_editado:
+#         return jsonify({'mensaje': 'Usuario editado exitosamente', 'usuario': usuario_editado.nombre}), 200
+#     else:
+#         return jsonify({'mensaje': 'Usuario no encontrado'}), 404
