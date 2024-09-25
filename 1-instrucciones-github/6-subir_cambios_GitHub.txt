@@ -1,0 +1,22 @@
+para subir los cambio al github sigan estas instrucciones.
+
+
+
+1 - git checkout -b nombre_rama                             >>> Crean su rama y se cambian a ella automaticamente.
+(pueden poner los nombres que quieran pero para mejor entendimiento prefieran usar su nombre.)
+
+2 - git add nombre_del_archivo o de_la_carpeta             >>> Solamente los archivos que crearon o editaron.
+
+3 - git commit -m "Describan los cambios que hicieron"
+
+4 - git push origin nombre_de_su_rama                       >> Los cambios se subiran a su rama personal
+
+
+** no subir con | git add . | ya que subiria todos los archivos como el venv y __pycache__
+
+
+Ramas: (si pusieron otro nombre aganmelo saber.)
+-benjamin (no creada aún)
+-chuy (mathias)
+-rodrigo (no creada aún)
+-jairo

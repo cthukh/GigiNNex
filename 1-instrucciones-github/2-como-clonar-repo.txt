@@ -1,0 +1,12 @@
+En una nueva carpeta VACIA de cualquier nombre (el repositorio ya viene con la carpeta DegiNNEx)
+>>>copien los codigos nomas
+
+1 - abrir la terminal (Ctrl + ñ)
+
+2 - git init
+
+3 - git clone https://github.com/cthukh/DegiNNex_copia.git
+
+Con eso ya deberia crearles la carpeta
+
+** El repositorio viene sin el entorno virtual (venv) **

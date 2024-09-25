@@ -1,0 +1,17 @@
+**Tener instalado XAMPP
+
+1 - en XAMPP Control Panel. Activar Apache y MySQL
+
+2 - Al lado del boton de activar MySQL, apretar boton "Admin"
+
+3 - en phpMyAdmin pinchar en Nueva 
+
+4 - El nombre de la base tiene que ser deginnex en minúsculas
+
+5 - en la terminal (Ctrl + ñ) con el venv activado, escribir:
+
+6 - flask db init 
+
+7 - flask db migrate
+
+8 - flask db upgade

@@ -1,0 +1,10 @@
+** Ubicarse en la carpeta principal DegiNNex (moverse con cd /nombre_directorio)
+
+1 - Abrir la terminal (Ctrl + ñ)
+
+2 - python -m venv venv
+
+3 - .\venv\Scripts\Activate.ps1
+
+** Dentro del venv
+4 - pip install -r requirements.txt

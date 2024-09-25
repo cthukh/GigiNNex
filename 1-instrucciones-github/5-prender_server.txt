@@ -1,0 +1,8 @@
+**habiendo hecho los anteriores pasos
+
+-Tener activado el venv
+-Tener activado el XAMPP (Apache y MySQL)
+
+Deberia prenderles sin problema al activar el servidor.
+
+1 - python .\server.py 

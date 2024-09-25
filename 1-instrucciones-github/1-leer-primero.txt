@@ -1,0 +1,13 @@
+>>> Warenes inc.
+
+
+
+Vamos a trabajar mediante ramas en github.
+Cada uno tendra su rama propia para evitar conflicto de archivos.
+
+De igual manera, si llegaran a borrar codigo importante pueden volver a descargarlo de git.
+Una vez estemos deacuerdo con los cambio hechos, los subiremos a la rama principal.
+
+ULR repositorio: https://github.com/cthukh/DegiNNex_copia.git
+
+(joder chavales me siento todo un jefe XD)
