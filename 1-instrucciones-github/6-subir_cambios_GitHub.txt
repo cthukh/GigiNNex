@@ -1,5 +1,5 @@
-para subir los cambio al github sigan estas instrucciones.
 
+para subir los cambio al github sigan estas instrucciones.
 
 
 1 - git checkout -b nombre_rama                             >>> Crean su rama y se cambian a ella automaticamente.
