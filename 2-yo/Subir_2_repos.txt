@@ -1,0 +1,5 @@
+**Original
+git push origin master                      >>> https://github.com/cthukh/GigiNNex.git
+
+**Copia
+git push origin2 master / jairo             >>> https://github.com/cthukh/DegiNNex_copia.git
