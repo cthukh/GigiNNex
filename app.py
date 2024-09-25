@@ -131,9 +131,11 @@ def logout():
 def opciones_usuario():
     return redirect ("/home")
 
-@app.route('/prueba')
-def prueba():
-    return render_template('indexcalixtro.html')
+
+#TODO ruta de prueba
+# @app.route('/prueba')
+# def prueba():
+#     return render_template('indexcalixtro.html')
 
 # errores
 
