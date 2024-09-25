@@ -1,7 +1,7 @@
 >>> Warenes inc.
 
 
-** Antes de editar su git hagan git pull para bajar los cambios mas recientes y evitar conflictos.
+** Antes de editar su git hagan | git pull | para bajar los cambios más recientes y evitar conflictos.
 
 Vamos a trabajar mediante ramas en github.
 Cada uno tendra su rama propia para evitar conflicto de archivos.
