@@ -7,5 +7,5 @@ git push origin master                      >>> https://github.com/cthukh/GigiNN
 git push origin2 master                     >>> https://github.com/cthukh/DegiNNex_copia.git
 
 
-** subir a rama jairo
-git push origin2 jairo
+** subir a rama
+git push origin2 nayuc
