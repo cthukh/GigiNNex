@@ -144,8 +144,6 @@ def logout():
     return(redirect("/"))
 
 
-
-
 @app.route("/userop")
 def opciones_usuario():
     return redirect ("/home")
@@ -154,9 +152,14 @@ def opciones_usuario():
 #TODO ruta de prueba
 @app.route('/prueba')
 def prueba():
-    return render_template('') # Nombre de su plantilla de prueba en templates
+    return render_template('test/prueba3.html') # Nombre de su plantilla de prueba en templates
 
 # Manejo de errores.
 @app.errorhandler(404)
 def not_found(error):
     return render_template('404.html'), 404         # Página no encontrada
+
+@app.route('/all_users')
+def all_users():
+    usuarios = Usuario.obtener_todos()
+    return render_template('private/all_users.html', usuarios=usuarios)
