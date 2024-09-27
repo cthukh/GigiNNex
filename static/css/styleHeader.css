@@ -3,7 +3,8 @@
 
 header {
     position: relative;
-    background: linear-gradient(to bottom, #000000, #0a2c2c);
+    /* background: linear-gradient(to bottom, #000000, #0a2c2c); */
+    background-color: black;
     display: flex;
     justify-content: space-between;
     height: 100px;
@@ -11,6 +12,9 @@ header {
 
 body a {
     text-decoration: none;
+}
+.logo {
+    display: flex;
 }
 
 .title {
@@ -43,6 +47,6 @@ body a {
 }
 
 #navbar ul li a:hover {
-    color: #2a5815;
+    color: #0b8074;
     text-decoration: dashed;
 }

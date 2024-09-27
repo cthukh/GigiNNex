@@ -14,20 +14,28 @@ class ControladorUsuarios:
         return usuario
 
     @staticmethod
-    def editar_usuario(id, nombre, correo, clave):
+    def editar_usuario(id, nombre, correo):
+        # verifica el usuario por la id en db.
         usuario = Usuario.query.get(id)
         if not usuario:
-            return None
-        # Verifica si el correo es único
+            resultado = {
+                'error' : True,
+                'mensaje' : f"El usuario {id} no existe en la db"
+            }
+            return resultado
+
+        # Verifica si el correo existe en la db
         if Usuario.query.filter_by(correo=correo).first() and correo != usuario.correo:
-            return {'error': 'El correo ya está en uso.'}
+            resultado = {
+                'error' : True,
+                'mensaje' : f"El correo {correo} ya esta en uso"
+            }
+            return resultado
+
         usuario.nombre = nombre
         usuario.correo = correo
-        # Hash de la nueva clave si se proporciona
-        if clave:
-            usuario.clave = generate_password_hash(clave)
         db.session.commit()
-        return usuario
+        return {'usuario' : usuario}  # Retorna el usuario dentro de un diccionario
 
     # #def obtener_usuarios()
     # #def borrar_usuario()

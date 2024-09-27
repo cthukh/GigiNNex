@@ -1,7 +1,6 @@
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, rgb(248, 225, 255), rgb(58, 4, 85));
 }
 
 /* main */
@@ -24,7 +23,7 @@ body {
     flex-direction: row;
     margin: 30px;
     justify-content: space-between;
-    background: linear-gradient(to right, rgba(85, 19, 132, 0.67), #ffffff);
+    background: linear-gradient(to left, rgb(248, 225, 255), rgb(84, 4, 85));
     border: 2px solid #000000;
     height: 320px;
     text-align: center;

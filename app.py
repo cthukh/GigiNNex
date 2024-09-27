@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, redirect
+from flask import Flask, render_template, flash, redirect, request
 from sqlalchemy import select
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -51,7 +51,7 @@ def auth(form_registro=None, form_acceso=None):
         form_acceso = FormularioAcceso()
     return render_template("auth.html", form_registro=form_registro, form_acceso=form_acceso)
 
-# Maneja la creación de nuevos usuarios,  recibe un formulario y guarda en la base de datos.
+# Maneja la creación de nuevos usuarios, recibe un formulario y guarda en la base de datos.
 # Valida los datos del formulario y proporciona mensajes de error si es necesario.
 @app.route("/register", methods=["POST"])
 def register():
@@ -119,7 +119,7 @@ def index():
 def selecionar_categorias(categoria):
     # Renderiza diferentes plantillas según la categoría
     if   categoria == 'videos':                         # Categoría video.
-        return render_template ('cat_videos.html')
+        return render_template ('cat_video.html')
     elif categoria == 'imagenes':                       # Categoría imagenes.
         return render_template ('cat_imagenes.html')
     elif categoria == 'audio':                          # Categoría audio.  #? Posible retiro.
@@ -135,6 +135,33 @@ def perfil():
     # Muestra solo la sesión activa.
     return render_template("perfil.html", usuario=current_user)
 
+@app.route('/editar', methods=['GET', 'POST'])
+@login_required
+def editar_perfil():
+    if request.method == 'POST':
+        # Aquí puedes procesar el formulario si es necesario
+        return redirect('/accion')  # Redirige a la ruta de acción, si se usa POST
+        
+    return render_template('editar_usuario.html', usuario=current_user)
+
+@app.route('/accion', methods=['POST'])
+@login_required
+def accion():
+    error = False
+    id = current_user.id
+    nombre = request.form.get('nombre')
+    correo = request.form.get('correo')
+
+    resultado = ControladorUsuarios.editar_usuario(id, nombre, correo)
+    if 'error' in resultado:
+        # si hay error en resultado, devuelve un diccionario con el error.
+        flash (resultado['mensaje'])
+        print (resultado['mensaje'])
+    else:
+        flash("Perfil actualizado con éxito")
+        print("Perfil actualizado con éxito")
+    return redirect('/perfil')
+
 # Cierra la sesión del usuario actual. (No se borra de la db)
 @app.route("/logout")
 def logout():
@@ -142,12 +169,6 @@ def logout():
     flash(f"El usuario ha cerrado sesión")
     print(f"El usuario ha cerrado sesión")
     return(redirect("/"))
-
-
-@app.route("/userop")
-def opciones_usuario():
-    return redirect ("/home")
-
 
 #TODO ruta de prueba
 @app.route('/prueba')

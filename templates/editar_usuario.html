@@ -1,0 +1,42 @@
+{% extends 'base_template.html' %}
+
+{% block title %}
+Editar Perfil
+{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='editar_usuario.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="main">
+    <h2>Editar Usuario</h2>
+
+    <form action="/accion" class="form_edit" method="POST" >
+        <label for="nombre">Nombre de Usuario:</label>
+        <input type="text" class="nuevo" name="nombre" value="{{ usuario.nombre }}" required>
+
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" class="nuevo" name="correo" value="{{ usuario.correo }}" required>
+
+        <button type="submit" id="subir" class="btn btn-primary">Guardar Cambios</button>
+        <button type="cancel" id="cancel" class="btn btn-danger">Cancelar</button>
+    </form>
+</div>
+{% endblock %}
+
+
+
+<!-- <script>
+    document.getElementById('editUserForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+
+        // Aquí puedes agregar la lógica para enviar los datos al servidor
+        console.log('Usuario actualizado:', { username, email });
+
+        alert('Cambios guardados con éxito.');
+    });
+</script> -->

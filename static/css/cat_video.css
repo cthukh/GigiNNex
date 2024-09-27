@@ -1,23 +1,24 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
     background-color: #f4f4f4;
 }
 
-header {
-    text-align: center;
-    margin-bottom: 20px;
+.main {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 30px;
 }
 
-#profiles {
+/* perfiles */
+#perfiles {
     display: flex;
-    flex-wrap: wrap;
+    justify-items: stretch;
     gap: 20px;
     justify-content: center;
+    
 }
 
 .profile {
+    width: 100%;
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 10px;

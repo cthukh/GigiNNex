@@ -1,0 +1,30 @@
+.main {
+    height: 100vh;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.form_edit {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: auto;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+.nuevo {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    margin-bottom: 6px;
+}

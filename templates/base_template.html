@@ -12,13 +12,42 @@
     <link rel="icon" href="/static/img/logo_gigi.png" type="image/png">
     <link rel="stylesheet" href="{{url_for('static', filename='css/styleHeader.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/styleFooter.css')}}">
+    <style>body {background-color: #f9f9f9;}</style>
     {% block link %}
     {% endblock %}
 </head>
 
 <body>
+    <header>
+        <a href="/inicio">
+            <div class="logo">
+                <h1 class="title">DegiNNex</h1>
+                <img src="{{ url_for('static', filename='img/logo_gigi-bg_remove-1024x1024.png') }}" width="100px" alt="logo-diginnex">
+            </div>
+        </a>
+
+        <nav id="navbar">
+            <ul>
+                <li><a href="/inicio#services" >Servicios</a></li>
+                <li><a href="/perfil">Perfil</a></li>
+                <li><a href="#about">Acerca de</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
     {% block content %}
     {% endblock %}
+
+    <footer>
+        <!-- Sobre nosotros -->
+        <section id="about">
+            <h2>Acerca de Nosotros</h2>
+            <p>Somos una plataforma dedicada a conectar profesionales creativos con clientes.</p>
+        </section>
+
+        <p><strong>&copy; 2024 DegiNNex, Warens inc. </strong></p>
+    </footer>
 
     {% block script %}
     {% endblock %}
