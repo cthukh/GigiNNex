@@ -34,11 +34,11 @@
                 </div>
             </a>
 
-            <a href="{{ url_for('selecionar_categorias', categoria='imagenes') }}">
+            <a href="{{ url_for('selecionar_categorias', categoria='diseño-grafico') }}">
                 <!-- categoria imagenes -->
                 <div class="service">
                     <div class="service-item">
-                        <h3>Imagenes</h3>
+                        <h3>Diseño Gráfico</h3>
                     </div>
                     <div class="service-img">
                         <img src="{{url_for('static', filename='img/fotografo.png')}}" alt="fotografiando novios">
@@ -64,7 +64,7 @@
                 </div>
             </a>
 
-            <a href="{{ url_for('selecionar_categorias', categoria='sitios_web') }}">
+            <a href="{{ url_for('selecionar_categorias', categoria='sitios-web') }}">
                 <!-- categoria sitios webs -->
                 <div class="service">
                     <div class="service-item">
@@ -81,7 +81,7 @@
         </section>
 
         <!-- contactos -->
-        <section class="main-section" id="contact">
+        <!-- <section class="main-section" id="contact">
             <h2>Contacto</h2>
             <form id="contact-form">
                 <label for="name">Nombre:</label>
@@ -92,7 +92,7 @@
                 <textarea id="message" required></textarea>
                 <button class="btn" type="submit">Enviar</button>
             </form>
-        </section>
+        </section> -->
 
     </div>
 {% endblock %}

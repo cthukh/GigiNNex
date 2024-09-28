@@ -115,16 +115,16 @@ def index():
     return render_template('index.html')
 
 # seleccion de categorias
-@app.route('/u_cat/<string:categoria>')
+@app.route('/section/<string:categoria>')
 def selecionar_categorias(categoria):
     # Renderiza diferentes plantillas según la categoría
     if   categoria == 'videos':                         # Categoría video.
         return render_template ('cat_video.html')
-    elif categoria == 'imagenes':                       # Categoría imagenes.
+    elif categoria == 'diseño-grafico':                       # Categoría imagenes.
         return render_template ('cat_imagenes.html')
     elif categoria == 'audio':                          # Categoría audio.  #? Posible retiro.
         return render_template ('cat_audio.html')
-    elif categoria == 'sitios_web':                     # Categoría sitios web.
+    elif categoria == 'sitios-web':                     # Categoría sitios web.
         return render_template ('cat_web.html')
 
 
@@ -169,6 +169,15 @@ def logout():
     flash(f"El usuario ha cerrado sesión")
     print(f"El usuario ha cerrado sesión")
     return(redirect("/"))
+# Elimina al usuario actual. (Lo borra de la db)
+@app.route('/eliminar_user')
+@login_required
+def eliminar():
+    user_id = current_user.id
+    ControladorUsuarios.borrar_usuario(user_id)
+    flash ("usuario eliminado")
+    return redirect('/')
+
 
 #TODO ruta de prueba
 @app.route('/prueba')

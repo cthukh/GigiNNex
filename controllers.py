@@ -37,5 +37,20 @@ class ControladorUsuarios:
         db.session.commit()
         return {'usuario' : usuario}  # Retorna el usuario dentro de un diccionario
 
+    @staticmethod
+    def borrar_usuario(id):
+        usuario = Usuario.query.get(id)
+        if not usuario:
+            resultado = {
+                'error' : True,
+                'mensaje' : f"El usuario {id} no existe en la db"
+            }
+            return resultado
+        
+        if usuario:
+            db.session.delete(usuario)
+            db.session.commit()
+            return {'mensaje': "usuario eliminado"}
     # #def obtener_usuarios()
     # #def borrar_usuario()
+    
