@@ -6,4 +6,6 @@
 
 - Mostrar todos los usuarios (hecho: /all_users)
 
+- Eliminar usuario de la base de datos (hecho)
+
 - Crear nuevo index (no parece ser necesario)
