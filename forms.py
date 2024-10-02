@@ -9,7 +9,9 @@ class FormularioRegistro(FlaskForm):
     confirmar_clave = PasswordField('Confirmar clave', validators=[DataRequired()])
     submit = SubmitField('Registrarme')
 
-class FormularioAcceso(FlaskForm):    
+class FormularioAcceso(FlaskForm):
     correo    = EmailField('Correo', validators=[DataRequired(), Email()])
     clave = PasswordField('Clave', validators=[DataRequired()])
     submit   = SubmitField('Acceder')
+
+# class CompletarPerfil(FlaskForm):

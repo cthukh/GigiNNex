@@ -9,6 +9,7 @@ class Usuario(db.Model, UserMixin):
     correo         = db.Column(db.String(45),nullable=False,unique=True)
     clave          = db.Column(db.String(255),nullable=False)
     # img_perfil     = db.Column(db.String(45),nullable=True)
+    proveedor      = db.relationship('Proovedor')
 
     def establecer_clave(self, clave):
         self.clave = generate_password_hash(clave)
@@ -35,3 +36,9 @@ class Usuario(db.Model, UserMixin):
     def obtener_por_id(id):
         print(f"Consultando por el usuario con id {id} en db")
         return Usuario.query.get(id)
+
+class Proveedor(db.Model):
+    __tablename__   = "proveedores"
+    id              = db.Column(db.Interger, primary_key = True)
+    tipo            = db.Column(db.String, db.ForeignKey('id'))
+    tipo            = db.relationship('', back_populates='wishlist')
