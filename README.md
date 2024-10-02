@@ -1,11 +1,7 @@
-- Crear conexion entre base de datos para almacenar usuarios y proveedores. 
+- Crear conexion entre base de datos para almacenar usuarios y proveedores.
+    - creo que mejor una nueva fila nulleable que almacene tipo de usuario.
 
 - Cambiar barra de navegación. (a medias)
 
-- Crear plantilla para poder editar usuarios (hecho)
-
-- Mostrar todos los usuarios (hecho: /all_users)
-
-- Eliminar usuario de la base de datos (hecho)
-
-- Crear nuevo index (no parece ser necesario)
+- De la pagina de perfil crear apartado para completar perfil
+    - que pueda elegir desde aqui si ser proveedor o quedar como cliente.
