@@ -4,16 +4,26 @@
 
 .card {
     width: 20rem; 
-    height: 15rem;
+    height: 18rem;
     text-align: center;
-    align-self: center;
+    align-items: center;
+    align-self: flex-start;
     padding: 20px;
     margin: 0 auto;
     margin-top: 6%;
-    border: 2px solid;
-    border-color: black;
+    border: 1px solid;
+    border-color: rgb(146, 146, 146);
 }
-
+.botones {
+    display: flex;
+    flex-direction: column;
+    width: 10rem;
+    margin-top: 20px;
+    height: max-content;
+    a {
+        margin: 3px;
+    }
+}
 .mensaje {
     text-align: center;
     color: rgb(0, 119, 255);

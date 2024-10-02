@@ -51,6 +51,3 @@ class ControladorUsuarios:
             db.session.delete(usuario)
             db.session.commit()
             return {'mensaje': "usuario eliminado"}
-    # #def obtener_usuarios()
-    # #def borrar_usuario()
-    
