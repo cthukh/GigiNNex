@@ -1,15 +1,16 @@
 from app import db
+from datetime import datetime
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
 class Usuario(db.Model, UserMixin):
     __tablename__  = "usuarios"
-    id             = db.Column(db.Integer, primary_key = True)
-    nombre         = db.Column(db.String(45),nullable=False)
-    correo         = db.Column(db.String(45),nullable=False,unique=True)
-    clave          = db.Column(db.String(255),nullable=False)
-    # img_perfil     = db.Column(db.String(45),nullable=True)
-    proveedor      = db.relationship('Proovedor')
+    id             = db.Column(db.Integer,     primary_key=True)
+    nombre         = db.Column(db.String(45),  nullable=False)
+    correo         = db.Column(db.String(45),  nullable=False, unique=True)
+    clave          = db.Column(db.String(255), nullable=False)
+    proveedor      = db.Column(db.Boolean,     nullable=False, default=False)
+    created_at     = db.Column(db.DateTime(),  default = datetime.now())
 
     def establecer_clave(self, clave):
         self.clave = generate_password_hash(clave)
@@ -37,8 +38,8 @@ class Usuario(db.Model, UserMixin):
         print(f"Consultando por el usuario con id {id} en db")
         return Usuario.query.get(id)
 
-class Proveedor(db.Model):
-    __tablename__   = "proveedores"
-    id              = db.Column(db.Interger, primary_key = True)
-    tipo            = db.Column(db.String, db.ForeignKey('id'))
-    tipo            = db.relationship('', back_populates='wishlist')
+# class Categoria(db.Model):
+#     __tablename__   = "Categorias"
+#     id              = db.Column(db.Interger, primary_key = True)
+#     tipo            = db.Column(db.String, db.ForeignKey('id'))
+#     tipo            = db.relationship('', back_populates='wishlist')
