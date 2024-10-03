@@ -181,8 +181,13 @@ def eliminar():
 
 #TODO ruta de prueba
 @app.route('/prueba')
+@login_required
 def prueba():
-    return render_template('test/prueba3.html') # Nombre de su plantilla de prueba en templates
+    return render_template('perfil_v2.html', usuario=current_user) # Nombre de su plantilla de prueba en templates
+
+@app.route('/comprobante')
+def comp():
+    return render_template ('validar_proveedor.html')
 
 # Manejo de errores.
 @app.errorhandler(404)

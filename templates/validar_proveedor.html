@@ -1,0 +1,50 @@
+
+{% extends "base_template.html" %}
+
+{% block title %}
+    Comprobante
+{% endblock %}
+
+{% block link %}
+{% endblock %}
+
+{% block content %}
+<div class="container mb-5">
+    <h1 class="my-4" style="text-align: center;">Validar Perfil</h1>
+    <center><p>Antes de comenzar a ofrecer tu perfil tienes que confirmar algunos datos</p></center>
+
+    <form action="/action" class="form-upg" method="POST">
+        <div class="mb-3">
+            <label for="edad" class="form-label">Edad</label>
+            <input type="number" class="form-control" id="edad" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="exp-año" class="form-label">Años de Experiencia</label>
+            <input type="number" class="form-control" id="xp-año" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="educacion" class="form-label">Educación</label>
+            <textarea class="form-control" id="educacion" rows="3" placeholder="Ingrese la formación académica o cursos relevantes" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="proyectos" class="form-label">Proyectos Realizados</label>
+            <textarea class="form-control" id="proyectos" rows="4" placeholder="Describa brevemente los proyectos realizados y sus resultados" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="habilidades" class="form-label">Habilidades</label>
+            <input type="text" class="form-control" id="habilidades" placeholder="Ingrese las habilidades técnicas" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="contacto" class="form-label">Datos de Contacto</label>
+            <input type="email" class="form-control" id="contacto" placeholder="Correo electrónico" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enviar Comprobante</button>
+    </form>
+</div>
+{% endblock %}

@@ -38,6 +38,9 @@ class ControladorUsuarios:
         return {'usuario' : usuario}  # Retorna el usuario dentro de un diccionario
 
     @staticmethod
+    def completar_usuario(id,edad,)
+
+    @staticmethod
     def borrar_usuario(id):
         usuario = Usuario.query.get(id)
         if not usuario:

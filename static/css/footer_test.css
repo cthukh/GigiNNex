@@ -1,0 +1,20 @@
+footer {
+    /* margin-top: 50px; Aumenta el espacio entre el contenido y el footer */
+    padding: 20px; /* Añade un padding interno si es necesario */
+    background-color: #f8f9fa; /* Cambia el color de fondo si deseas */
+    background: #333;
+    color: white;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    bottom: auto;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+footer p {
+    margin-left: 30px;
+    margin-right: 30px;
+}

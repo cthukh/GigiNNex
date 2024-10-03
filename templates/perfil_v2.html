@@ -1,0 +1,70 @@
+
+<!-- home perfil -->
+
+{% extends "base_template.html" %}
+
+
+{% block title %}
+    Perfil
+{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/perfil_v2.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="profile-sidebar">
+        <div class="profile-header">
+            <img src="https://via.placeholder.com/150" alt="" class="profile-picture">
+            <div class="user-details">
+                <h1>{{usuario.nombre}} <!--<span class="age">• 58</span>--> </h1>
+                <p>{{usuario.correo}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="profile-main">
+        <nav class="profile-nav">
+            <button class="nav-item active" data-tab="profile">Perfil</button>
+            <button class="nav-item" data-tab="experience">Experiencia</button>
+            <button class="nav-item" data-tab="services">Servicios</button>
+            <a href="/comprobante"><button class="btn btn-primary">Validar Perfil</button></a>
+        </nav>
+        <div class="profile-content">
+            <div id="profile" class="tab-content active">
+                <h2>Biografia</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lectus orci sed
+                urna pharetra ac tempor eu augittis. In condimentum facilisis porta. Sed nec diam
+                eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam.</p>
+                
+                <h2>Experiencia</h2>
+                <ul>
+                    <li>Maecenas quis tortor arcu. Vivamus rutrum nunc non neque consectetur quis</li>
+                    <li>Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie</li>
+                    <li>Etiam sit amet est et massa fringilla congue</li>
+                    <li>Sed nec diam eu diam mattis viverra</li>
+                </ul>
+                
+                <h2>Intereses</h2>
+                <ul>
+                    <li>Proin quis tortor orci. Etiam at risus et justo</li>
+                    <li>In hac habitasse platea dictumst</li>
+                    <li>Proin mattis sodales diam, at molestie nec</li>
+                    <li>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor</li>
+                    <li>Vivamus ut mollis quam. Morbi in commodo nulla</li>
+                    <li>Quisque lacus quam, egestas ac tincidunt a, lacinia vel velit</li>
+                    <li>Class aptent taciti sociosqu ad litora torquent per</li>
+                </ul>
+            </div>
+            <div id="experience" class="tab-content">
+                <p>Experiencia aqui</p>
+            </div>
+            <div id="services" class="tab-content">
+                <p>Mis servicios</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script src="{{ url_for('static', filename='js/perfil.js') }}"></script>
+{% endblock %}
