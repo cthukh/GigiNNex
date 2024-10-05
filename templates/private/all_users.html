@@ -11,8 +11,13 @@
     <a href="/inicio">inicio</a>
         <div class="card" style="width: 18rem;">
             <div class="card-body">
-              <h5 class="card-title">{{usuario.nombre}}</h5>
-              <h6 class="card-subtitle mb-2 text-body-secondary">{{usuario.correo}}</h6>
+              <h5 class="card-title">{{usuario.nombre}} {{ usuario.apellido }}</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">id: {{usuario.id}}</h6>
+              <h6 class="card-subtitle mb-2 text-body-secondary">id usuario: {{usuario.id_usuario}}</h6>
+              <h6 class="card-subtitle mb-2 text-body-secondary">correo: {{usuario.correo}}</h6>
+              <h6 class="card-subtitle mb-2 text-body-secondary">edad: {{usuario.edad}}</h6>
+              <h6 class="card-subtitle mb-2 text-body-secondary">telefono: {{usuario.telefono}}</h6>
+              <h6 class="card-subtitle mb-2 text-body-secondary">tipo: {{usuario.tipo}}</h6>
               <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
               <a href="#" class="card-link">Card link</a>
               <a href="#" class="card-link">Another link</a>

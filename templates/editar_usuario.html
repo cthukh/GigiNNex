@@ -12,9 +12,12 @@ Editar Perfil
 <div class="main">
     <h2>Editar Usuario</h2>
 
-    <form action="/accion" class="form_edit" method="POST" >
-        <label for="nombre">Nombre de Usuario:</label>
+    <form action="/perfil/editar" class="form_edit" method="POST" >
+        <label for="nombre">Nombre:</label>
         <input type="text" class="nuevo" name="nombre" value="{{ usuario.nombre }}" required>
+
+        <label for="apellido">Apellido:</label>
+        <input type="text" class="nuevo" name="apellido" value="{{ usuario.apellido }}">
 
         <label for="correo">Correo Electrónico:</label>
         <input type="email" class="nuevo" name="correo" value="{{ usuario.correo }}" required>

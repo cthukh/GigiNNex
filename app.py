@@ -16,8 +16,8 @@ login_manager = LoginManager(app)
 login_manager.login_view = "auth"
 
 # importación de módulos propios
-from forms import FormularioRegistro, FormularioAcceso
-from models import Usuario
+from forms import FormularioRegistro, FormularioAcceso, FormularioValidar
+from models import Usuario, Proveedor
 from controllers import ControladorUsuarios
 
 # Inicialización de versiones de la bases de datos
@@ -36,6 +36,7 @@ def add_header(response):
     response.headers['Pragma'] = 'no-cache'
     response.headers['Expires'] = '0'
     return response
+#************************************************** Manejo registro/login **************************************************
 
 # Verifica si el usuario ya está autenticado. Si lo está, redirige a la página de inicio.
 # Si no, muestra los formularios de registro y acceso.
@@ -58,15 +59,16 @@ def register():
     form   = FormularioRegistro()
     error  = None
 
-    # Validación del formulario.
+    #################### Validación del formulario. ####################
     # Comprobar si el correo ya está registrado; Si no, se crea el usuario.
     if form.validate_on_submit():
         print("form valido")
         flash("Form valido")
-        nombre = form.nombre.data
-        correo = form.correo.data
-        clave  = form.clave.data
-        
+        nombre   = form.nombre.data
+        apellido = form.apellido.data
+        correo   = form.correo.data
+        clave    = form.clave.data
+
         # Consultamos si existe en la db.
         usuario = Usuario().obtener_por_correo(correo)
         if usuario is not None:
@@ -77,7 +79,7 @@ def register():
         else:
             flash(f'Registro solicitado para el usuario { nombre }')
             # Utilización de un controlador entre Vista y Modelo.
-            ControladorUsuarios().crear_usuario(nombre, correo, clave)
+            ControladorUsuarios().crear_usuario(nombre, apellido, correo, clave)
             # Generamos una instancia de datos.
             return redirect("/")
     else:
@@ -85,7 +87,7 @@ def register():
         flash("Form invalido")
         return auth(form_registro=form)
 
-# Validar el acceso del usuario.
+#################### Validar el acceso del usuario. ####################
 # Si es exitoso, iniciar sesión.
 @app.route("/login", methods=["POST"])
 def login():
@@ -109,68 +111,115 @@ def login():
             print(f"El usuario no esta registrado")
             return(redirect("/"))
 
-# Página Principal
+#************************************************** Rutas principales. **************************************************
+
+#################### Página Principal ####################
 @app.route('/inicio')
 def index():
     return render_template('index.html')
 
-# seleccion de categorias
+#################### Selección de categorias ####################
 @app.route('/section/<string:categoria>')
 def selecionar_categorias(categoria):
     # Renderiza diferentes plantillas según la categoría
     if   categoria == 'videos':                         # Categoría video.
         return render_template ('cat_video.html')
-    elif categoria == 'diseño-grafico':                       # Categoría imagenes.
+    elif categoria == 'diseño-grafico':                 # Categoría Diseño Grafico.
         return render_template ('cat_imagenes.html')
     elif categoria == 'audio':                          # Categoría audio.  #? Posible retiro.
         return render_template ('cat_audio.html')
     elif categoria == 'sitios-web':                     # Categoría sitios web.
         return render_template ('cat_web.html')
+    else:
+        return render_template('404.html')
 
 
-# Muestra el perfil del usuario autenticado.
-@app.route("/perfil")
+# perfi/view
+
+#################### Ver perfil propio ####################
+@app.route("/perfil/me")
 @login_required
 def perfil():
     # Muestra solo la sesión activa.
-    return render_template("perfil.html", usuario=current_user)
+    return render_template("perfil_v2.html", usuario=current_user)
 
-@app.route('/editar', methods=['GET', 'POST'])
+#################### editar perfil propio ####################
+
+@app.route('/perfil/me/editar', methods=['GET', 'POST'])
 @login_required
 def editar_perfil():
+    if request.method == 'GET':
+        return render_template('editar_usuario.html', usuario=current_user)
+
     if request.method == 'POST':
-        # Aquí puedes procesar el formulario si es necesario
-        return redirect('/accion')  # Redirige a la ruta de acción, si se usa POST
+        error = False
+        idq       = current_user.id
+        nombre   = request.form.get('nombre')
+        apellido = request.form.get('apellido')
+        correo   = request.form.get('correo')
         
-    return render_template('editar_usuario.html', usuario=current_user)
+        # if current_user.miembro == True:
+        #     id_miembro = Proveedor.id
+        #     prover = Proveedor.obtener_miembro_por_id(id_miembro)
+        #     return prover
 
-@app.route('/accion', methods=['POST'])
+        resultado = ControladorUsuarios.editar_usuario(idq,nombre,apellido,correo)
+        if 'error' in resultado:
+            # si hay error en resultado, devuelve un diccionario con el error.
+            flash (resultado['mensaje'])
+            print (resultado['mensaje'])
+        else:
+            flash("Perfil actualizado con éxito")
+            print("Perfil actualizado con éxito")
+            
+        return redirect('/perfil')  # Redirige a la ruta de acción, si se usa POST
+    
+
+#################### Convertirse en proveedor ####################
+@app.route('/perfil/me/verificar')
 @login_required
-def accion():
-    error = False
-    id = current_user.id
-    nombre = request.form.get('nombre')
-    correo = request.form.get('correo')
+def crear_miembro():
+    form_validar = FormularioValidar()
+    return render_template('validar_proveedor.html', form_validar=form_validar)
 
-    resultado = ControladorUsuarios.editar_usuario(id, nombre, correo)
-    if 'error' in resultado:
-        # si hay error en resultado, devuelve un diccionario con el error.
-        flash (resultado['mensaje'])
-        print (resultado['mensaje'])
-    else:
-        flash("Perfil actualizado con éxito")
-        print("Perfil actualizado con éxito")
-    return redirect('/perfil')
 
-# Cierra la sesión del usuario actual. (No se borra de la db)
-@app.route("/logout")
+#************************************************** Opciones de usuario **************************************************
+
+# Edita datos del usuario (nombre, apellido, correo)
+# @app.route('/editar', methods=['POST'])
+# @login_required
+# def accion():
+
+
+
+#################### Crea la tabla de proveedores ####################
+@app.route('/validar', methods=["POST", "GET"])
+@login_required
+def validar_perfil():
+    form_validar = FormularioValidar()
+    id           = current_user.id
+    nombre       = current_user.nombre
+    apellido     = current_user.apellido
+    edad         = request.form.get('edad')
+    correo       = current_user.correo
+    telefono     = request.form.get('telefono')
+    tipo         = request.form.get('tipo')
+    
+    if form_validar.validate_on_submit():
+        ControladorUsuarios.crear_miembro(id, nombre, apellido, edad, correo, telefono, tipo)
+        return redirect('/perfilv2')
+
+#################### Cierra la sesión del usuario actual. ####################
+# (No se borra de la db)
+@app.route("/cuenta/logout")
 def logout():
     logout_user()
     flash(f"El usuario ha cerrado sesión")
     print(f"El usuario ha cerrado sesión")
     return(redirect("/"))
-# Elimina al usuario actual. (Lo borra de la db)
-@app.route('/eliminar_user')
+
+#################### Elimina al usuario actual de la db.  ####################
+@app.route('/cuenta/eliminar')
 @login_required
 def eliminar():
     user_id = current_user.id
@@ -179,22 +228,31 @@ def eliminar():
     return redirect('/')
 
 
-#TODO ruta de prueba
-@app.route('/prueba')
-@login_required
+#TODO ************************************************** Rutas de prueba **************************************************
+@app.route('/pov')
 def prueba():
-    return render_template('perfil_v2.html', usuario=current_user) # Nombre de su plantilla de prueba en templates
+    usuarios = Proveedor().obtener_todos()
+    return render_template ('private/all_users.html', usuarios=usuarios)
 
 @app.route('/comprobante')
 def comp():
     return render_template ('validar_proveedor.html')
 
-# Manejo de errores.
-@app.errorhandler(404)
-def not_found(error):
-    return render_template('404.html'), 404         # Página no encontrada
-
 @app.route('/all_users')
 def all_users():
     usuarios = Usuario.obtener_todos()
     return render_template('private/all_users.html', usuarios=usuarios)
+
+@app.route('/perfilv2')
+@login_required
+def perfilv2():
+    usuario = current_user
+    return render_template('perfil_v2.html', usuario=usuario )
+
+#! ************************************************** Manejo de errores **************************************************
+
+#################### Página no encontrada. ####################
+@app.errorhandler(404)
+def not_found(error):
+    return render_template('404.html'), 404
+
